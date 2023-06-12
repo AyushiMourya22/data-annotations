@@ -21,7 +21,17 @@ const cors=require("cors")
 app.use(cors())
 app.use(express.json())
 const PORT=process.env.PORT ||5000
-require('./conn')
+// require('./conn')
+
+const connectDB = async () => {
+    try {
+      const conn = await mongoose.connect(process.env.MONGOURL);
+      console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+      console.log(error);
+      process.exit(1);
+    }
+  }
 
 app.get("/test",(req,res)=>{
     res.send("Okayy")
@@ -120,4 +130,8 @@ app.get("*",function(_,res){
     )
 })
 
-app.listen(PORT,()=>console.log(`Listening at port ${PORT}`))
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log("listening for requests");
+    })
+})

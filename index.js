@@ -14,6 +14,7 @@ const express=require("express")
 const app=express()
 const path=require("path")
 require("dotenv").config()
+const mongoose=require("mongoose")
 
 const bcrypt=require("bcryptjs")
 const cors=require("cors")

@@ -13,7 +13,7 @@ export const Login = () => {
         ev.preventDefault()
         try {
             const user = await axios.post("/login", { email, password })
-            // console.log(user)
+            console.log(user)
             if (user) {
                 alert("Login successful")
                 setredirect(true)

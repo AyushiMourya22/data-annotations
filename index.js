@@ -82,11 +82,12 @@ app.get("/topics",async(req,res)=>{
         const farmerData=await Farmer.find({})
         const hinduphobiaData=await Hinduphobia.find({})
         const historicalData=await Historical.find({})
+        
         const islamophobiaData=await Islamophobia.find({})
         const ozilData=await Ozil.find({})
         const russiaUkraineData=await RussiaUkraine.find({})
         const templeData=await TempleMosque.find({})
-        res.send({data,celebrityData,farmerData,hinduphobiaData,historicalData,islamophobiaData,ozilData,russiaUkraineData,covidData,templeData})
+        res.send({data,celebrityData,farmerData,hinduphobiaData,historicalData,islamophobiaData,ozilData,russiaUkraineData,templeData})
     }catch(E){
         res.status(400).send(E)
     }

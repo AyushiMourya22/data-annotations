@@ -5,16 +5,15 @@ import axios from "axios"
 
 export const Topics = () => {
   const { user } = useContext(Context)
-  const [covid, setCovid] = useState([])
-  const [politics, setPolitics] = useState([])
-  const [banTwitter, setTwitter] = useState([])
-  const [religious, setreligious] = useState([])
-  const [wuhan, setWuhan] = useState([])
-  const [israel, setisrael] = useState([])
-  const [charlie, setcharlie] = useState([])
-  const [casteism, setcasteism] = useState([])
+  const [celebrity, setcelebrity] = useState([])
+  const [farmer, setfarmer] = useState([])
+  const [hinduphobia, sethinduphobia] = useState([])
+  const [historical, sethistorical] = useState([])
+  const [islamophobia, setislamophobia] = useState([])
+  const [ozil, setozil] = useState([])
+  const [russiaUkraine, setrussiaUkraine] = useState([])
+  const [temple, settemple] = useState([])
   const [data, setdata] = useState([])
-  const [otherdata, setotherdata] = useState([])
 
   const done = (id) => {
     return data.some(item => {
@@ -27,17 +26,16 @@ export const Topics = () => {
       try {
         const response = await axios.get("/topics")
         // console.log(response.data)
-        const { data, otherData, covidData, banTwitterData, politicsData, religiousData, casteismData, israelData, wuhanData, charlieData } = response.data
-        setCovid(covidData)
+        const { data, celebrityData, hinduphobiaData, farmerData, historicalData, templeData, ozilData, islamophobiaData, russiaUkraineData } = response.data
+        setcelebrity(celebrityData)
         setdata(data)
-        setotherdata(otherData)
-        setPolitics(politicsData)
-        setTwitter(banTwitterData)
-        setreligious(religiousData)
-        setisrael(israelData)
-        setcharlie(charlieData)
-        setWuhan(wuhanData)
-        setcasteism(casteismData)
+        setfarmer(farmerData)
+        sethinduphobia(hinduphobiaData)
+        sethistorical(historicalData)
+        setozil(ozilData)
+        setrussiaUkraine(russiaUkraineData)
+        setislamophobia(islamophobiaData)
+        settemple(templeData)
       } catch (e) {
         console.log(e)
       }
@@ -56,8 +54,8 @@ export const Topics = () => {
         <div className='m-[3%]'>
           <div className='bg-white  rounded-3xl p-[2%]'>
             <div className='mx-[5%] '>
-              <div className='text-[150%] font-bold tracking-wider font-serif'>Indian Politics</div>
-              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{politics.map(tweet => {
+              <div className='text-[150%] font-bold tracking-wider font-serif'>Farmer Protest</div>
+              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{farmer.map(tweet => {
                 return (
                   <Link to={`/topics/${tweet.tweet_id}`} className={`mx-[1%] ${done(tweet.tweet_id) ? "bg-green-300" : "bg-sky-200"} font-mono rounded-2xl p-[2%] hover:animate-pulse hover:scale-110 transition ease-in-out border-2 border-sky-900  my-[1%]`} state={tweet}>{tweet.tweet_id}</Link>
                 )
@@ -68,8 +66,8 @@ export const Topics = () => {
         <div className='m-[3%]'>
           <div className='bg-white  rounded-3xl p-[2%]'>
             <div className='mx-[5%] '>
-              <div className='text-[150%] font-bold tracking-wider font-serif'>Religious Controversies</div>
-              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{religious.map(tweet => {
+              <div className='text-[150%] font-bold tracking-wider font-serif'>Historical Hindu Muslim</div>
+              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{historical.map(tweet => {
                 return (
                   <Link to={`/topics/${tweet.tweet_id}`} className={`mx-[1%] ${done(tweet.tweet_id) ? "bg-green-300" : "bg-sky-200"} font-mono rounded-2xl p-[2%] hover:animate-pulse hover:scale-110 transition ease-in-out border-2 border-sky-900  my-[1%]`} state={tweet}>{tweet.tweet_id}</Link>
                 )
@@ -80,8 +78,8 @@ export const Topics = () => {
         <div className='m-[3%]'>
           <div className='bg-white  rounded-3xl p-[2%]'>
             <div className='mx-[5%] '>
-              <div className='text-[150%] font-bold tracking-wider font-serif'>Israel</div>
-              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{israel.map(tweet => {
+              <div className='text-[150%] font-bold tracking-wider font-serif'>Ozil</div>
+              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{ozil.map(tweet => {
                 return (
                   <Link to={`/topics/${tweet.tweet_id}`} className={`mx-[1%] ${done(tweet.tweet_id) ? "bg-green-300" : "bg-sky-200"} font-mono rounded-2xl p-[2%] hover:animate-pulse hover:scale-110 transition ease-in-out border-2 border-sky-900  my-[1%]`} state={tweet}>{tweet.tweet_id}</Link>
                 )
@@ -92,8 +90,8 @@ export const Topics = () => {
         <div className='m-[3%]'>
           <div className='bg-white  rounded-3xl p-[2%]'>
             <div className='mx-[5%] '>
-              <div className='text-[150%] font-bold tracking-wider font-serif'>Wuhan Virus</div>
-              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{wuhan.map(tweet => {
+              <div className='text-[150%] font-bold tracking-wider font-serif'>Islamophobia </div>
+              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{islamophobia.map(tweet => {
                 return (
                   <Link to={`/topics/${tweet.tweet_id}`} className={`mx-[1%] ${done(tweet.tweet_id) ? "bg-green-300" : "bg-sky-200"} font-mono rounded-2xl p-[2%] hover:animate-pulse hover:scale-110 transition ease-in-out border-2 border-sky-900  my-[1%]`} state={tweet}>{tweet.tweet_id}</Link>
                 )
@@ -104,8 +102,8 @@ export const Topics = () => {
         <div className='m-[3%]'>
           <div className='bg-white  rounded-3xl p-[2%]'>
             <div className='mx-[5%] '>
-              <div className='text-[150%] font-bold tracking-wider font-serif'>Charlie Hebdo</div>
-              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{charlie.map(tweet => {
+              <div className='text-[150%] font-bold tracking-wider font-serif'>Russia Ukraine Conflict</div>
+              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{russiaUkraine.map(tweet => {
                 return (
                   <Link to={`/topics/${tweet.tweet_id}`} className={`mx-[1%] ${done(tweet.tweet_id) ? "bg-green-300" : "bg-sky-200"} font-mono rounded-2xl p-[2%] hover:animate-pulse hover:scale-110 transition ease-in-out border-2 border-sky-900  my-[1%]`} state={tweet}>{tweet.tweet_id}</Link>
                 )
@@ -116,8 +114,8 @@ export const Topics = () => {
         <div className='m-[3%]'>
           <div className='bg-white  rounded-3xl p-[2%]'>
             <div className='mx-[5%] '>
-              <div className='text-[150%] font-bold tracking-wider font-serif'>Casteism</div>
-              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{casteism.map(tweet => {
+              <div className='text-[150%] font-bold tracking-wider font-serif'>Temple Mosque Controversies</div>
+              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{temple.map(tweet => {
                 return (
                   <Link to={`/topics/${tweet.tweet_id}`} className={`mx-[1%] ${done(tweet.tweet_id) ? "bg-green-300" : "bg-sky-200"} font-mono rounded-2xl p-[2%] hover:animate-pulse hover:scale-110 transition ease-in-out border-2 border-sky-900  my-[1%]`} state={tweet}>{tweet.tweet_id}</Link>
                 )
@@ -128,8 +126,8 @@ export const Topics = () => {
         <div className='m-[3%]'>
           <div className='bg-white  rounded-3xl p-[2%]'>
             <div className='mx-[5%] '>
-              <div className='text-[150%] font-bold tracking-wider font-serif'>Covid Crisis</div>
-              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{covid.map(tweet => {
+              <div className='text-[150%] font-bold tracking-wider font-serif'>Celebrity Controversies</div>
+              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{celebrity.map(tweet => {
                 return (
                   <Link to={`/topics/${tweet.tweet_id}`} className={`mx-[1%] ${done(tweet.tweet_id) ? "bg-green-300" : "bg-sky-200"} font-mono rounded-2xl p-[2%] hover:animate-pulse hover:scale-110 transition ease-in-out border-2 border-sky-900  my-[1%]`} state={tweet}>{tweet.tweet_id}</Link>
                 )
@@ -140,8 +138,8 @@ export const Topics = () => {
         <div className='mx-[3%]'>
           <div className='bg-white  rounded-3xl p-[2%]'>
             <div className='mx-[5%] '>
-              <div className='text-[150%] font-bold tracking-wider font-serif'>Ban Twitter</div>
-              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{banTwitter.map(tweet => {
+              <div className='text-[150%] font-bold tracking-wider font-serif'>Hinduphobia</div>
+              <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{hinduphobia.map(tweet => {
                 return (
                   <Link to={`/topics/${tweet.tweet_id}`} className={`mx-[1%] ${done(tweet.tweet_id) ? "bg-green-300" : "bg-sky-200"} font-mono rounded-2xl p-[2%] hover:animate-pulse hover:scale-110 transition ease-in-out border-2 border-sky-900  my-[1%]`} state={tweet}>{tweet.tweet_id}</Link>
                 )
@@ -149,22 +147,7 @@ export const Topics = () => {
             </div>
           </div>
         </div>
-        {
-          otherdata.length > 0 &&
-          <div className='mx-[3%] py-[2%]'>
-            <div className='bg-white  rounded-3xl p-[2%]'>
-              <div className='mx-[5%] '>
-                <div className='text-[150%] font-bold tracking-wider font-serif'>Other</div>
-                <div className='flex justify-center my-[2%] w-[99%] flex-wrap'>{otherdata.map(tweet => {
-                  return (
-                    <Link to={`/topics/${tweet.tweet_id}`} className={`mx-[1%] ${done(tweet.tweet_id) ? "bg-green-300" : "bg-sky-200"} font-mono rounded-2xl p-[2%] hover:animate-pulse hover:scale-110 transition ease-in-out border-2 border-sky-900  my-[1%]`} state={tweet}>{tweet.tweet_id}</Link>
-                  )
-                })}</div>
-              </div>
-            </div>
-          </div>
 
-        }
       </div>
 
 
